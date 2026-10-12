@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081b29"/>
+      <stop offset="50%" stop-color="#0c2d48"/>
+      <stop offset="100%" stop-color="#001827"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#00abf0"/>
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer Rounded Tile -->
+  <rect x="5" y="5" width="90" height="90" rx="22" fill="url(#bgGrad)" stroke="#00abf0" stroke-width="4" filter="url(#neonGlow)"/>
+  
+  <!-- Sleek Glowing Hexagon / Shield Accent -->
+  <polygon points="50,15 82,32 82,68 50,85 18,68 18,32" fill="none" stroke="rgba(0,171,240,0.3)" stroke-width="2"/>
+  
+  <!-- Monogram C with Modern Code Bracket Accent -->
+  <path d="M 68 36 C 63 28, 52 25, 42 28 C 30 32, 24 43, 25 55 C 26 67, 34 75, 46 76 C 56 77, 65 72, 70 63" 
+        fill="none" stroke="url(#cyanGrad)" stroke-width="8" stroke-linecap="round"/>
+        
+  <!-- Glowing Dot Indicator -->
+  <circle cx="68" cy="36" r="4" fill="#38bdf8" filter="url(#neonGlow)"/>
+  <circle cx="50" cy="50" r="3" fill="#00abf0"/>
+</svg>

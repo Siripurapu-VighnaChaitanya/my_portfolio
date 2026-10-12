@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Portfolio Website | Siripurapu Vighna Chaitanya</title>
+  <title>Chaitanya | Portfolio</title>
   
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+  <!-- Modern Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
   
   <!-- Boxicons CDN -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -21,6 +22,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Background Ambient Glow & Particles -->
+  <canvas id="particles-bg"></canvas>
 
   <div class="wrapper">
     <!-- Static Left Hardcover -->
@@ -45,12 +49,18 @@
             <a href="https://github.com/Siripurapu-VighnaChaitanya" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i></a>
             <a href="https://www.linkedin.com/in/vighna-chaitanya-siripurapu-64963a338" target="_blank" rel="noopener" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
             <a href="mailto:chaitanya.siripurapu.in@gmail.com" title="Email"><i class='bx bx-envelope'></i></a>
-            <a href="https://chaitanya-portfolio-flame-chi.vercel.app" target="_blank" rel="noopener" title="Vercel Live"><i class='bx bx-globe'></i></a>
+            <a href="https://chaitanya-portfolio-1.vercel.app" target="_blank" rel="noopener" title="Live Portfolio"><i class='bx bx-globe'></i></a>
           </div>
 
-          <p>
-            Final-year B.Tech CSE (AI &amp; ML) student skilled in Python, Flutter, FastAPI, and Agentic Engineering. Experienced in building AI-powered full-stack web platforms and Android apps from concept to production.
+          <p class="profile-bio">
+            Final-year B.Tech CSE (AI &amp; ML) student passionate about autonomous agentic engineering, full-stack web architectures, and intelligent cloud systems.
           </p>
+
+          <div class="quick-highlights">
+            <span class="highlight-chip"><i class='bx bxs-award'></i> 1st Prize AWS</span>
+            <span class="highlight-chip"><i class='bx bxs-file-doc'></i> 2 Research Papers</span>
+            <span class="highlight-chip"><i class='bx bxs-graduation'></i> CGPA 8.25</span>
+          </div>
 
           <div class="btn-box">
             <a href="resume.docx" download="Siripurapu_Vighna_Chaitanya_Resume.docx" class="btn">Download CV</a>
@@ -61,7 +71,7 @@
 
       <!-- ================= SHEET 1 (PAGES 1 & 2) ================= -->
       <div class="book-page page-right turn" id="turn-1">
-        <!-- Page 1 (Work Experience & Education) -->
+        <!-- Page 1 (Education & Experience) -->
         <div class="page-front">
           <h1 class="title">Education &amp; Experience</h1>
 
@@ -69,19 +79,19 @@
             <div class="workeduc-content">
               <span class="year"><i class='bx bxs-calendar'></i> 2023 - 2027</span>
               <h3>B.Tech - CSE (AI &amp; ML)</h3>
-              <p>Narasaraopeta Engineering College (Autonomous). CGPA: <strong>8.25 / 10.0</strong>. Specialized in deep learning and autonomous systems.</p>
+              <p>Narasaraopeta Engineering College. CGPA: <strong>8.25 / 10.0</strong>. Specialized in Deep Learning, Agentic Workflows &amp; Cloud.</p>
             </div>
 
             <div class="workeduc-content">
-              <span class="year"><i class='bx bxs-calendar'></i> May 2026 - Jun 2026</span>
-              <h3>AI Automation Intern - DataValley India</h3>
-              <p>Hands-on AI Automation &amp; Agent Engineering with n8n workflow automation, webhook triggers, API integrations, and workflow optimization.</p>
+              <span class="year"><i class='bx bxs-briefcase'></i> May 2026 - Jun 2026</span>
+              <h3>AI Automation Intern • DataValley</h3>
+              <p>Engineered n8n autonomous workflow pipelines, custom webhook triggers, multi-system API integration, and process automation.</p>
             </div>
 
             <div class="workeduc-content">
-              <span class="year"><i class='bx bxs-trophy'></i> Award Winner</span>
-              <h3>1st Prize - AWS App Challenge</h3>
-              <p>Won 1st prize in the college-level competitive cloud engineering &amp; app development hackathon.</p>
+              <span class="year highlight-year"><i class='bx bxs-trophy'></i> 1st Prize Winner</span>
+              <h3>AWS Cloud &amp; App Challenge</h3>
+              <p>Secured 1st place in college-wide cloud engineering hackathon for designing highly resilient cloud applications.</p>
             </div>
           </div>
 
@@ -89,33 +99,33 @@
           <span class="nextprev-btn" data-page="turn-1"><i class='bx bx-chevron-right'></i></span>
         </div>
 
-        <!-- Page 2 (My Services & Specializations) -->
+        <!-- Page 2 (What I Build / Domains of Expertise) -->
         <div class="page-back">
-          <h1 class="title">What I Build</h1>
+          <h1 class="title">Domains of Expertise</h1>
 
           <div class="services-box">
-            <div class="services-content">
-              <i class='bx bx-bot'></i>
-              <h3>AI Agents &amp; Automation</h3>
-              <p>Autonomous AI agents, prompt &amp; agentic engineering (Claude, Antigravity, n8n), LLM integrations, and ChromaDB vector search.</p>
+            <div class="services-content s-ai">
+              <div class="srv-icon-wrap"><i class='bx bx-bot'></i></div>
+              <h3>AI &amp; Agents</h3>
+              <p>Autonomous agents, prompt engineering, n8n automations, ChromaDB vector search &amp; Ollama local LLMs.</p>
             </div>
 
-            <div class="services-content">
-              <i class='bx bx-code-alt'></i>
-              <h3>Full-Stack Web Platforms</h3>
-              <p>End-to-end web apps with React.js frontend, FastAPI / Flask backends, RESTful APIs, and SQL/Supabase databases.</p>
+            <div class="services-content s-web">
+              <div class="srv-icon-wrap"><i class='bx bx-code-alt'></i></div>
+              <h3>Full-Stack Web</h3>
+              <p>End-to-end web apps with React.js frontend, Python FastAPI / Flask backends &amp; clean RESTful APIs.</p>
             </div>
 
-            <div class="services-content">
-              <i class='bx bx-mobile-alt'></i>
-              <h3>Flutter Mobile Apps</h3>
-              <p>Cross-platform Android applications built with Flutter &amp; Dart, Firebase/Supabase backends, and Android Studio APK deployment.</p>
+            <div class="services-content s-db">
+              <div class="srv-icon-wrap"><i class='bx bx-data'></i></div>
+              <h3>Database Architecture</h3>
+              <p>Relational MySQL modeling, Supabase realtime backend, query optimization &amp; cloud data persistence.</p>
             </div>
 
-            <div class="services-content">
-              <i class='bx bx-book-bookmark'></i>
-              <h3>Research &amp; Publications</h3>
-              <p>2 International conference publications in Autonomous Obstacle Detection (ICRAES) &amp; Voice Assistants (ICSSIT).</p>
+            <div class="services-content s-mobile">
+              <div class="srv-icon-wrap"><i class='bx bx-mobile-alt'></i></div>
+              <h3>Mobile &amp; ML</h3>
+              <p>Cross-platform Flutter (Dart) Android apps and OpenCV real-time computer vision models.</p>
             </div>
           </div>
 
@@ -126,42 +136,68 @@
 
       <!-- ================= SHEET 2 (PAGES 3 & 4) ================= -->
       <div class="book-page page-right turn" id="turn-2">
-        <!-- Page 3 (Skills Arsenal) -->
+        <!-- Page 3 (Skills Arsenal with Progress Bars) -->
         <div class="page-front">
-          <h1 class="title">My Skills</h1>
+          <h1 class="title">Skills &amp; Technologies</h1>
 
           <div class="skills-box">
-            <div class="skills-content">
-              <h3>Frontend &amp; Mobile</h3>
-              <div class="content">
-                <span><i class='bx bxl-html5'></i> HTML5</span>
-                <span><i class='bx bxl-css3'></i> CSS3</span>
-                <span><i class='bx bxl-javascript'></i> JavaScript</span>
-                <span><i class='bx bxl-react'></i> React.js</span>
-                <span><i class='bx bxl-flutter'></i> Flutter (Dart)</span>
+            <!-- Progress Bars Section -->
+            <div class="skills-category">
+              <h3 class="category-title"><i class='bx bx-code-curly'></i> Core Proficiency</h3>
+              <div class="skill-bars-list">
+                <div class="skill-bar-item">
+                  <div class="skill-info">
+                    <span><i class='bx bxl-python text-py'></i> Python</span>
+                    <strong>85%</strong>
+                  </div>
+                  <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
+                </div>
+
+                <div class="skill-bar-item">
+                  <div class="skill-info">
+                    <span><i class='bx bxl-react text-react'></i> React &amp; Frontend</span>
+                    <strong>80%</strong>
+                  </div>
+                  <div class="bar-track"><div class="bar-fill" style="width: 80%;"></div></div>
+                </div>
+
+                <div class="skill-bar-item">
+                  <div class="skill-info">
+                    <span><i class='bx bxl-flask text-flask'></i> Flask &amp; FastAPI</span>
+                    <strong>75%</strong>
+                  </div>
+                  <div class="bar-track"><div class="bar-fill" style="width: 75%;"></div></div>
+                </div>
+
+                <div class="skill-bar-item">
+                  <div class="skill-info">
+                    <span><i class='bx bx-data text-mysql'></i> MySQL &amp; Supabase</span>
+                    <strong>80%</strong>
+                  </div>
+                  <div class="bar-track"><div class="bar-fill" style="width: 80%;"></div></div>
+                </div>
+
+                <div class="skill-bar-item">
+                  <div class="skill-info">
+                    <span><i class='bx bxl-git text-git'></i> Git &amp; GitHub</span>
+                    <strong>90%</strong>
+                  </div>
+                  <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
+                </div>
               </div>
             </div>
 
-            <div class="skills-content">
-              <h3>Backend &amp; Languages</h3>
-              <div class="content">
-                <span><i class='bx bxl-python'></i> Python</span>
-                <span><i class='bx bxl-java'></i> Java</span>
-                <span><i class='bx bx-server'></i> FastAPI</span>
-                <span><i class='bx bxl-flask'></i> Flask</span>
-                <span><i class='bx bx-code-curly'></i> REST APIs</span>
-              </div>
-            </div>
-
-            <div class="skills-content">
-              <h3>AI, Cloud &amp; Tools</h3>
-              <div class="content">
-                <span><i class='bx bx-chip'></i> ChromaDB</span>
-                <span><i class='bx bx-brain'></i> Ollama LLM</span>
-                <span><i class='bx bx-git-branch'></i> n8n Automation</span>
-                <span><i class='bx bxl-firebase'></i> Firebase</span>
-                <span><i class='bx bx-data'></i> Supabase / SQL</span>
-                <span><i class='bx bxl-git'></i> Git &amp; GitHub</span>
+            <!-- Frameworks & Tools Badges -->
+            <div class="skills-category">
+              <h3 class="category-title"><i class='bx bx-wrench'></i> Specialized Tools</h3>
+              <div class="skills-badges">
+                <span class="badge-pill"><i class='bx bxl-flutter'></i> Flutter</span>
+                <span class="badge-pill"><i class='bx bx-chip'></i> ChromaDB</span>
+                <span class="badge-pill"><i class='bx bx-brain'></i> Ollama LLM</span>
+                <span class="badge-pill"><i class='bx bx-git-branch'></i> n8n Automation</span>
+                <span class="badge-pill"><i class='bx bxl-firebase'></i> Firebase</span>
+                <span class="badge-pill"><i class='bx bx-camera'></i> OpenCV</span>
+                <span class="badge-pill"><i class='bx bxl-java'></i> Java</span>
               </div>
             </div>
           </div>
@@ -170,51 +206,56 @@
           <span class="nextprev-btn" data-page="turn-2"><i class='bx bx-chevron-right'></i></span>
         </div>
 
-        <!-- Page 4 (Latest AI Projects) -->
+        <!-- Page 4 (Flagship AI & Agentic Projects) -->
         <div class="page-back">
-          <h1 class="title">Latest AI Projects</h1>
+          <h1 class="title">AI &amp; Agent Projects</h1>
 
           <div class="portfolio-box">
             <div class="portfolio-item">
               <div class="proj-top">
-                <i class='bx bx-file-find proj-ico'></i>
-                <div>
+                <div class="proj-icon-box pi-ai"><i class='bx bx-file-find'></i></div>
+                <div class="proj-header-text">
                   <h3>DocuMind AI</h3>
                   <span class="proj-badge">React • FastAPI • ChromaDB</span>
                 </div>
               </div>
-              <p>Document intelligence platform for upload, parsing, notes generation, and semantic vector Q&amp;A search.</p>
+              <p>Document intelligence engine with vector search, automatic note generation, and conversational document Q&amp;A.</p>
               <a href="https://github.com/Siripurapu-VighnaChaitanya/DocuMind_AI" target="_blank" rel="noopener" class="proj-btn">
-                <span>View Repository</span> <i class='bx bx-link-external'></i>
+                <span>View GitHub Repo</span> <i class='bx bx-link-external'></i>
               </a>
             </div>
 
             <div class="portfolio-item">
               <div class="proj-top">
-                <i class='bx bx-microphone proj-ico'></i>
-                <div>
+                <div class="proj-icon-box pi-voice"><i class='bx bx-microphone'></i></div>
+                <div class="proj-header-text">
                   <h3>FRIDAY v2.7 Voice Assistant</h3>
                   <span class="proj-badge">Python • Flask • Ollama</span>
                 </div>
               </div>
-              <p>Multilingual voice assistant (English, Telugu, Hindi) with speaker recognition, voice authentication, and automation.</p>
+              <p>Multilingual voice assistant (English, Telugu, Hindi) with speaker recognition, voice authentication &amp; automation.</p>
               <a href="https://github.com/Siripurapu-VighnaChaitanya/Friday_v2.7" target="_blank" rel="noopener" class="proj-btn">
-                <span>View Repository</span> <i class='bx bx-link-external'></i>
+                <span>View GitHub Repo</span> <i class='bx bx-link-external'></i>
               </a>
             </div>
 
             <div class="portfolio-item">
               <div class="proj-top">
-                <i class='bx bx-compass proj-ico'></i>
-                <div>
-                  <h3>ResearchPilot &amp; Navigator</h3>
+                <div class="proj-icon-box pi-agent"><i class='bx bx-compass'></i></div>
+                <div class="proj-header-text">
+                  <h3>Web Navigator &amp; ResearchPilot</h3>
                   <span class="proj-badge">FastAPI • Web Agents</span>
                 </div>
               </div>
-              <p>Autonomous agents for query planning, web data extraction, multi-source synthesis, and automated reporting.</p>
-              <a href="https://github.com/Siripurapu-VighnaChaitanya/ResearchPilot_AI_Agent" target="_blank" rel="noopener" class="proj-btn">
-                <span>View Repository</span> <i class='bx bx-link-external'></i>
-              </a>
+              <p>Autonomous agent for intelligent search planning, web content scraping, multi-source synthesis, and reporting.</p>
+              <div class="dual-links">
+                <a href="https://github.com/Siripurapu-VighnaChaitanya/ResearchPilot_AI_Agent" target="_blank" rel="noopener" class="proj-btn">
+                  <span>ResearchPilot</span> <i class='bx bx-link-external'></i>
+                </a>
+                <a href="https://github.com/Siripurapu-VighnaChaitanya/Web_Navigator_AI_Agent" target="_blank" rel="noopener" class="proj-btn">
+                  <span>Web Navigator</span> <i class='bx bx-link-external'></i>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -225,50 +266,50 @@
 
       <!-- ================= SHEET 3 (PAGES 5 & 6) ================= -->
       <div class="book-page page-right turn" id="turn-3">
-        <!-- Page 5 (Mobile Apps & More Labs) -->
+        <!-- Page 5 (Mobile, ML & Full-Stack Projects) -->
         <div class="page-front">
           <h1 class="title">Mobile &amp; ML Projects</h1>
 
           <div class="portfolio-box">
             <div class="portfolio-item">
               <div class="proj-top">
-                <i class='bx bx-note proj-ico'></i>
-                <div>
+                <div class="proj-icon-box pi-mobile"><i class='bx bx-note'></i></div>
+                <div class="proj-header-text">
                   <h3>Noter Mobile App</h3>
                   <span class="proj-badge">Flutter • Dart • Supabase</span>
                 </div>
               </div>
-              <p>Smart mobile note-taking application with real-time cloud database sync, markdown notes, and instant search.</p>
+              <p>Cross-platform Android note application with real-time cloud sync, markdown rendering &amp; instant search.</p>
               <a href="https://github.com/Siripurapu-VighnaChaitanya/Noter" target="_blank" rel="noopener" class="proj-btn">
-                <span>View Noter Repo</span> <i class='bx bx-link-external'></i>
+                <span>View GitHub Repo</span> <i class='bx bx-link-external'></i>
               </a>
             </div>
 
             <div class="portfolio-item">
               <div class="proj-top">
-                <i class='bx bx-cloud-lightning proj-ico'></i>
-                <div>
+                <div class="proj-icon-box pi-weather"><i class='bx bx-cloud-lightning'></i></div>
+                <div class="proj-header-text">
                   <h3>WonderCast Weather</h3>
                   <span class="proj-badge">Flutter • Firebase • REST API</span>
                 </div>
               </div>
-              <p>Dynamic forecasting app with interactive weather animations, hourly metrics, and Firebase synchronization.</p>
+              <p>Dynamic forecasting app with interactive visual weather effects, hourly precipitation &amp; location tracking.</p>
               <a href="https://github.com/Siripurapu-VighnaChaitanya/WonderCast" target="_blank" rel="noopener" class="proj-btn">
-                <span>View WonderCast Repo</span> <i class='bx bx-link-external'></i>
+                <span>View GitHub Repo</span> <i class='bx bx-link-external'></i>
               </a>
             </div>
 
             <div class="portfolio-item">
               <div class="proj-top">
-                <i class='bx bx-camera proj-ico'></i>
-                <div>
-                  <h3>Emotion Recognition &amp; Sync</h3>
-                  <span class="proj-badge">OpenCV • MaterialSync • Habit</span>
+                <div class="proj-icon-box pi-vision"><i class='bx bx-camera'></i></div>
+                <div class="proj-header-text">
+                  <h3>Facial Emotion Recognition</h3>
+                  <span class="proj-badge">OpenCV • CNN • Python</span>
                 </div>
               </div>
-              <p>Real-time facial emotion recognition using CNNs, plus MaterialSync resource manager &amp; Habit Tracker web apps.</p>
+              <p>Computer vision system utilizing deep convolutional networks for real-time video stream emotion classification.</p>
               <a href="https://github.com/Siripurapu-VighnaChaitanya/Facial_Emotion_Recognition" target="_blank" rel="noopener" class="proj-btn">
-                <span>View ML Repo</span> <i class='bx bx-link-external'></i>
+                <span>View GitHub Repo</span> <i class='bx bx-link-external'></i>
               </a>
             </div>
           </div>
@@ -279,27 +320,37 @@
 
         <!-- Page 6 (Contact Form & Back to Profile) -->
         <div class="page-back">
-          <h1 class="title">Contact Me!</h1>
+          <h1 class="title">Get In Touch</h1>
 
           <div class="contact-box">
             <form id="contact-form" onsubmit="return false;">
               <div class="field-wrap">
-                <input type="text" class="field" id="sender-name" placeholder="Full Name" required>
+                <input type="text" class="field" id="sender-name" placeholder="Your Name" required>
               </div>
               <div class="field-wrap">
-                <input type="email" class="field" id="sender-email" placeholder="Email Address" required>
+                <input type="email" class="field" id="sender-email" placeholder="Your Email Address" required>
               </div>
               <div class="field-wrap">
-                <textarea class="field" id="message-text" placeholder="Your Message" rows="4" required></textarea>
+                <textarea class="field" id="message-text" placeholder="Your Message..." rows="3" required></textarea>
               </div>
 
-              <button type="submit" class="btn" id="submit-btn">Send Message</button>
+              <button type="submit" class="btn" id="submit-btn"><i class='bx bx-send'></i> Send Message</button>
               <div id="form-msg" class="form-msg"></div>
             </form>
 
             <div class="direct-contact-info">
-              <p><i class='bx bx-envelope'></i> chaitanya.siripurapu.in@gmail.com</p>
-              <p><i class='bx bx-phone'></i> +91 8019586248</p>
+              <a href="mailto:chaitanya.siripurapu.in@gmail.com" class="contact-card-mini">
+                <i class='bx bx-envelope'></i>
+                <span>chaitanya.siripurapu.in@gmail.com</span>
+              </a>
+              <a href="tel:+918019586248" class="contact-card-mini">
+                <i class='bx bx-phone'></i>
+                <span>+91 8019586248</span>
+              </a>
+              <a href="https://www.linkedin.com/in/vighna-chaitanya-siripurapu-64963a338" target="_blank" rel="noopener" class="contact-card-mini">
+                <i class='bx bxl-linkedin-square'></i>
+                <span>LinkedIn Profile</span>
+              </a>
             </div>
           </div>
 

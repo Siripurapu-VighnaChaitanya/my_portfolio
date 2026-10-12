@@ -126,3 +126,96 @@ if (contactForm) {
     }, 800);
   });
 }
+
+/**
+ * =====================================================================
+ * AMBIENT BACKGROUND PARTICLES
+ * Lightweight animated neon particles & constellations behind the 3D book
+ * =====================================================================
+ */
+const canvas = document.getElementById('particles-bg');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const PARTICLE_COUNT = 38;
+
+  function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
+      this.radius = Math.random() * 1.8 + 0.8;
+      this.alpha = Math.random() * 0.5 + 0.2;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 171, 240, ${this.alpha})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#00abf0';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(new Particle());
+  }
+
+  function renderParticles() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Subtle center radial ambient glow behind book
+    const grad = ctx.createRadialGradient(width / 2, height / 2, 50, width / 2, height / 2, Math.max(width, height) * 0.6);
+    grad.addColorStop(0, 'rgba(0, 171, 240, 0.08)');
+    grad.addColorStop(0.5, 'rgba(0, 110, 154, 0.03)');
+    grad.addColorStop(1, 'rgba(8, 27, 41, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    // Update & draw particles
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      // Connecting lines between nearby particles
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0, 171, 240, ${(1 - dist / 110) * 0.18})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(renderParticles);
+  }
+
+  renderParticles();
+}
