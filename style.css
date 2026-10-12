@@ -1,0 +1,694 @@
+/* =====================================================================
+   3D PORTFOLIO WEBSITE - CODEHAL DESIGN
+   HTML, CSS & JavaScript 3D Interactive Flipbook
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --bg-color: #081b29;
+  --main-color: #00abf0;
+  --main-hover: #008ecc;
+  --text-color: #333333;
+  --second-text-color: #555555;
+  --white-color: #ffffff;
+  --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+  --pages-color: linear-gradient(90deg, #ffffff, #e6ecf2);
+  --border: 0.125rem solid #00abf0;
+  --box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ================= WRAPPER & BOOK CONTAINER ================= */
+.wrapper {
+  position: relative;
+  width: 66rem;
+  height: 44rem;
+  padding: 2rem;
+  perspective: 250rem;
+  animation: show-animate 1.8s forwards;
+}
+
+@keyframes show-animate {
+  0%, 20% {
+    opacity: 0;
+    transform: rotate(-15deg) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Hardcovers */
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--cover-color);
+  box-shadow: var(--box-shadow);
+  border-top-left-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+  transform-origin: right;
+}
+
+.cover.cover-left {
+  z-index: -1;
+}
+
+.cover.cover-right {
+  z-index: 100;
+  transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.cover.cover-right.turn {
+  transform: rotateY(180deg);
+}
+
+/* The Book Spread */
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  perspective: 250rem;
+}
+
+/* Book Page Base */
+.book .book-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--pages-color);
+  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.15);
+  display: flex;
+  padding: 1.8rem 2.2rem;
+}
+
+.book-page.page-left {
+  box-shadow: -0.6rem 0.6rem 0.8rem rgba(0, 0, 0, 0.18);
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.book-page.page-right {
+  position: absolute;
+  right: 0;
+  left: auto;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+}
+
+.book-page.page-right.turn {
+  transform: rotateY(-180deg);
+}
+
+/* Front & Back Faces of Right Pages */
+.page-front,
+.page-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--pages-color);
+  padding: 1.8rem 2.2rem 2.4rem 2.2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-front {
+  transform: rotateY(0deg) translateZ(1px);
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+}
+
+.page-back {
+  transform: rotateY(180deg) translateZ(1px);
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+/* Page Spine Inner Shadow Depth */
+.page-front::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5rem;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.12), transparent);
+  pointer-events: none;
+}
+
+.page-back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5rem;
+  height: 100%;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.12), transparent);
+  pointer-events: none;
+}
+
+.book-page.page-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5rem;
+  height: 100%;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.12), transparent);
+  pointer-events: none;
+}
+
+/* ================= PAGE 0: PROFILE PAGE ================= */
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.profile-page .img-box {
+  width: 10.5rem;
+  height: 10.5rem;
+  border-radius: 50%;
+  border: 0.25rem solid var(--main-color);
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+  box-shadow: 0 0 1rem rgba(0, 171, 240, 0.4);
+  background: #f0f4f8;
+}
+
+.profile-page .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.profile-page h1 {
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.profile-page h3 {
+  font-size: 0.92rem;
+  color: var(--main-color);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.profile-page .social-media {
+  margin: 0.7rem 0;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.profile-page .social-media a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: transparent;
+  border: var(--border);
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: var(--main-color);
+  transition: all 0.3s ease;
+}
+
+.profile-page .social-media a:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+  box-shadow: 0 0 0.8rem var(--main-color);
+  transform: translateY(-2px);
+}
+
+.profile-page p {
+  font-size: 0.78rem;
+  color: var(--second-text-color);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  padding: 0 0.4rem;
+}
+
+.btn-box {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 8.8rem;
+  height: 2.5rem;
+  background: var(--main-color);
+  border: var(--border);
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--white-color);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--main-color);
+  box-shadow: 0 0 0.8rem rgba(0, 171, 240, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--main-color);
+}
+
+.btn-outline:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+/* ================= SECTION HEADINGS ================= */
+.title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 0.125rem solid var(--main-color);
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+/* ================= PAGE 1: WORK & EDUCATION ================= */
+.workeduc-box {
+  border-left: var(--border);
+  margin-left: 0.4rem;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.workeduc-content {
+  position: relative;
+}
+
+.workeduc-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1.45rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--main-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0.5rem var(--main-color);
+}
+
+.workeduc-content .year {
+  color: var(--main-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.15rem;
+}
+
+.workeduc-content h3 {
+  font-size: 0.92rem;
+  color: var(--text-color);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.workeduc-content p {
+  font-size: 0.73rem;
+  color: var(--second-text-color);
+  line-height: 1.4;
+  margin-top: 0.15rem;
+}
+
+/* ================= PAGE 2: SERVICES ================= */
+.services-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.services-content {
+  text-align: center;
+  border: var(--border);
+  border-radius: 0.4rem;
+  padding: 0.75rem 0.6rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.services-content:hover {
+  box-shadow: var(--box-shadow);
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+.services-content i {
+  font-size: 1.6rem;
+  color: var(--main-color);
+}
+
+.services-content h3 {
+  font-size: 0.84rem;
+  color: var(--text-color);
+  margin: 0.3rem 0 0.2rem 0;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.services-content p {
+  font-size: 0.68rem;
+  color: var(--second-text-color);
+  line-height: 1.35;
+}
+
+/* ================= PAGE 3: SKILLS ================= */
+.skills-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.skills-content h3 {
+  font-size: 0.88rem;
+  color: var(--text-color);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.skills-content .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skills-content .content span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--text-color);
+  border: var(--border);
+  border-radius: 0.3rem;
+  padding: 0.25rem 0.55rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.25s ease;
+}
+
+.skills-content .content span:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0.5rem rgba(0, 171, 240, 0.35);
+}
+
+.skills-content .content span i {
+  font-size: 0.95rem;
+  color: var(--main-color);
+}
+
+.skills-content .content span:hover i {
+  color: var(--white-color);
+}
+
+/* ================= PAGES 4 & 5: PROJECTS / PORTFOLIO ================= */
+.portfolio-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.portfolio-item {
+  border: var(--border);
+  border-radius: 0.4rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+  box-shadow: var(--box-shadow);
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+.proj-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.proj-ico {
+  font-size: 1.5rem;
+  color: var(--main-color);
+  flex-shrink: 0;
+}
+
+.portfolio-item h3 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.2;
+}
+
+.proj-badge {
+  font-size: 0.65rem;
+  color: var(--main-color);
+  font-weight: 500;
+}
+
+.portfolio-item p {
+  font-size: 0.7rem;
+  color: var(--second-text-color);
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+
+.proj-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--main-color);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.proj-btn:hover {
+  color: var(--main-hover);
+  text-decoration: underline;
+}
+
+/* ================= PAGE 6: CONTACT FORM ================= */
+.contact-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-box .field-wrap {
+  margin-bottom: 0.65rem;
+}
+
+.contact-box .field {
+  width: 100%;
+  background: transparent;
+  border: var(--border);
+  border-radius: 0.35rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.78rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.contact-box .field:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0.5rem rgba(0, 171, 240, 0.3);
+  background: #ffffff;
+}
+
+.contact-box textarea.field {
+  resize: none;
+}
+
+.contact-box .btn {
+  width: 100%;
+  height: 2.3rem;
+  font-size: 0.82rem;
+}
+
+.form-msg {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #008ecc;
+  margin-top: 0.4rem;
+  min-height: 1rem;
+}
+
+.direct-contact-info {
+  margin-top: 0.8rem;
+  text-align: left;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 0.6rem;
+}
+
+.direct-contact-info p {
+  font-size: 0.72rem;
+  color: var(--second-text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.direct-contact-info i {
+  color: var(--main-color);
+  font-size: 0.95rem;
+}
+
+/* ================= PAGINATION & TURN BUTTONS ================= */
+.number-page {
+  position: absolute;
+  bottom: 0.9rem;
+  font-size: 0.75rem;
+  color: var(--second-text-color);
+  font-weight: 600;
+}
+
+.page-front .number-page {
+  left: 1.2rem;
+}
+
+.page-back .number-page {
+  right: 1.2rem;
+}
+
+.nextprev-btn {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 1.1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: var(--second-text-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nextprev-btn:hover {
+  color: var(--main-color);
+  transform: scale(1.15);
+}
+
+.nextprev-btn.back {
+  left: 1.1rem;
+  right: auto;
+}
+
+/* Back Profile Shortcut */
+.back-profile {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 1.1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: transparent;
+  border: var(--border);
+  border-radius: 0.3rem;
+  font-size: 1.05rem;
+  color: var(--main-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.back-profile:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+  box-shadow: 0 0 0.5rem var(--main-color);
+}
+
+.back-profile p {
+  position: absolute;
+  top: -1.7rem;
+  left: 50%;
+  transform: translateX(-50%) scale(0.6);
+  font-size: 0.7rem;
+  color: var(--main-color);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.back-profile:hover p {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ================= RESPONSIVE STYLING ================= */
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  html {
+    font-size: 72%;
+  }
+}
